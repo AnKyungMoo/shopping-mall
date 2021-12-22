@@ -84,5 +84,8 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
-./idea
-./idea/*
+.idea/
+.idea/.gitignore
+.idea/.name
+.idea/compiler.xml
+.idea/misc.xml
