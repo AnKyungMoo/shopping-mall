@@ -2,14 +2,14 @@ package com.km.shoppingmall.presenter.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.km.shoppingmall.data.repository.UserRepositoryImpl
 import com.km.shoppingmall.domain.SignUpUseCase
 import com.km.shoppingmall.presenter.signup.model.SignUpModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SignUpViewModel : ViewModel() {
-    private val signUpUseCase = SignUpUseCase(UserRepositoryImpl())
-
+@HiltViewModel
+class SignUpViewModel @Inject constructor(private val signUpUseCase: SignUpUseCase) : ViewModel() {
     fun signUp(email: String, password: String, name: String) {
         viewModelScope.launch {
             signUpUseCase.signUp(SignUpModel(email, password, name))

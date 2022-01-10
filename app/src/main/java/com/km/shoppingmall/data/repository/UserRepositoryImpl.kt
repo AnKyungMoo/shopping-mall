@@ -1,10 +1,11 @@
 package com.km.shoppingmall.data.repository
 
-import com.km.shoppingmall.data.api.ShoppingMallApi
 import com.km.shoppingmall.data.dto.requestbody.SignUpRequestBody
+import com.km.shoppingmall.data.service.ShoppingMallService
+import javax.inject.Inject
 
-class UserRepositoryImpl : UserRepository {
+class UserRepositoryImpl @Inject constructor(private val shoppingMallService: ShoppingMallService) : UserRepository {
     override suspend fun signUp(signUpRequestBody: SignUpRequestBody) {
-        ShoppingMallApi.getShoppingMallService().signUp(signUpRequestBody)
+        shoppingMallService.signUp(signUpRequestBody)
     }
 }

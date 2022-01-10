@@ -13,7 +13,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import com.km.shoppingmall.ui.theme.ShoppingMallTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpActivity : ComponentActivity() {
     private val viewModel: SignUpViewModel by viewModels()
 
@@ -22,14 +24,21 @@ class SignUpActivity : ComponentActivity() {
 
         setContent {
             ShoppingMallTheme {
-                SignUpScreen(viewModel)
+                Screen(viewModel)
             }
         }
     }
 }
 
 @Composable
-fun SignUpScreen(viewModel: SignUpViewModel = SignUpViewModel()) {
+private fun Screen(viewModel: SignUpViewModel) {
+    SignUpScreen(
+        onClick = viewModel::signUp
+    )
+}
+
+@Composable
+fun SignUpScreen(onClick: (String, String, String) -> Unit) {
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val name = remember { mutableStateOf("") }
@@ -38,7 +47,7 @@ fun SignUpScreen(viewModel: SignUpViewModel = SignUpViewModel()) {
         InputComponent("e-mail", email.value, onValueChange = { email.value = it })
         InputComponent("password", password.value, onValueChange = { password.value = it })
         InputComponent("name", name.value, onValueChange = { name.value = it })
-        Button(onClick = { viewModel.signUp(email.value, password.value, name.value) }) {
+        Button(onClick = { onClick.invoke(email.value, password.value, name.value) }) {
             Text(text = "완료")
         }
     }
@@ -56,6 +65,6 @@ fun InputComponent(label: String, textValue: String, onValueChange: (String) -> 
 @Composable
 fun Preview() {
     ShoppingMallTheme {
-        SignUpScreen()
+        SignUpScreen(onClick = { _, _, _ -> })
     }
 }
