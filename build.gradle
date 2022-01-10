@@ -2,6 +2,8 @@
 buildscript {
     ext {
         compose_version = '1.0.1'
+        retrofit2_version = "2.9.0"
+        dagger_version = "2.40.5"
     }
     repositories {
         google()
