@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.km.shoppingmall.presenter.login.LoginActivity
 import com.km.shoppingmall.presenter.signup.SignUpActivity
 import com.km.shoppingmall.ui.theme.ShoppingMallTheme
 
@@ -38,6 +39,9 @@ fun MainScreen() {
     Column(modifier = Modifier.padding(10.dp)) {
         Button(onClick = { context.startActivity(Intent(context, SignUpActivity::class.java)) }) {
             Text(text = "회원가입")
+        }
+        Button(onClick = { context.startActivity(Intent(context, LoginActivity::class.java)) }) {
+            Text(text = "로그인")
         }
     }
 }
