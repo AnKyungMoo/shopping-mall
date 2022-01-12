@@ -12,7 +12,7 @@ import javax.inject.Inject
 class SignUpViewModel @Inject constructor(private val signUpUseCase: SignUpUseCase) : ViewModel() {
     fun signUp(email: String, password: String, name: String) {
         viewModelScope.launch {
-            signUpUseCase.signUp(SignUpModel(email, password, name))
+            signUpUseCase(SignUpModel(email, password, name))
         }
     }
 }

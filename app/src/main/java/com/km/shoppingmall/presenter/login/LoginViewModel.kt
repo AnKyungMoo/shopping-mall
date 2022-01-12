@@ -12,7 +12,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
     fun login(email: String, password: String) {
         viewModelScope.launch {
-            loginUseCase.login(LoginModel(email, password))
+            loginUseCase(LoginModel(email, password))
         }
     }
 }

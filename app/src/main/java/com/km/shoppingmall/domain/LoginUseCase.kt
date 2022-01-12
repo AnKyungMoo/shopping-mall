@@ -6,7 +6,7 @@ import com.km.shoppingmall.presenter.login.model.LoginModel
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(private val userRepository: UserRepository) {
-    suspend fun login(loginModel: LoginModel) {
+    suspend operator fun invoke(loginModel: LoginModel) {
         userRepository.login(LoginRequestBody(
             email = loginModel.email,
             password = loginModel.password

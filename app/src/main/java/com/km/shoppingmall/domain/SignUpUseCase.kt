@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class SignUpUseCase @Inject constructor(private val userRepository: UserRepository) {
-    suspend fun signUp(signUpModel: SignUpModel) {
+    suspend operator fun invoke(signUpModel: SignUpModel) {
         val signUpRequestBody = SignUpRequestBody(
             name = signUpModel.name,
             email = signUpModel.email,
