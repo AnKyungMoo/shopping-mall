@@ -1,5 +1,6 @@
 package com.km.shoppingmall.domain
 
+import com.km.shoppingmall.base.BaseUseCase
 import com.km.shoppingmall.data.dto.requestbody.SignUpRequestBody
 import com.km.shoppingmall.data.repository.UserRepository
 import com.km.shoppingmall.presenter.signup.model.SignUpModel
@@ -7,8 +8,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class SignUpUseCase @Inject constructor(private val userRepository: UserRepository) {
-    suspend operator fun invoke(signUpModel: SignUpModel) {
+class SignUpUseCase @Inject constructor(private val userRepository: UserRepository) : BaseUseCase() {
+    suspend operator fun invoke(signUpModel: SignUpModel) = execute {
         val signUpRequestBody = SignUpRequestBody(
             name = signUpModel.name,
             email = signUpModel.email,
