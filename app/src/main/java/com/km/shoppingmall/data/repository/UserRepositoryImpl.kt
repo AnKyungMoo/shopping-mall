@@ -11,7 +11,6 @@ class UserRepositoryImpl @Inject constructor(private val shoppingMallService: Sh
         shoppingMallService.signUp(signUpRequestBody)
     }
 
-    override suspend fun login(loginRequestBody: LoginRequestBody): LoginResponseBody {
+    override suspend fun login(loginRequestBody: LoginRequestBody): LoginResponseBody =
         shoppingMallService.login(loginRequestBody)
-    }
 }
