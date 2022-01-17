@@ -2,6 +2,7 @@ package com.km.shoppingmall.data.service
 
 import com.km.shoppingmall.data.dto.requestbody.LoginRequestBody
 import com.km.shoppingmall.data.dto.requestbody.SignUpRequestBody
+import com.km.shoppingmall.data.dto.responsebody.LoginResponseBody
 import retrofit2.http.Body
 import retrofit2.http.POST
 
@@ -11,5 +12,5 @@ interface ShoppingMallService {
     suspend fun signUp(@Body signUpRequestBody: SignUpRequestBody)
 
     @POST("/users/login/")
-    suspend fun login(@Body loginRequestBody: LoginRequestBody)
+    suspend fun login(@Body loginRequestBody: LoginRequestBody): LoginResponseBody
 }

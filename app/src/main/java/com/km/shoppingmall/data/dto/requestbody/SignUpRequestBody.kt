@@ -1,7 +1,9 @@
 package com.km.shoppingmall.data.dto.requestbody
 
+import com.google.gson.annotations.SerializedName
+
 data class SignUpRequestBody(
-    val name: String,
-    val email: String,
-    val password: String
+    @SerializedName("name") val name: String,
+    @SerializedName("email") val email: String,
+    @SerializedName("password") val password: String
 )
